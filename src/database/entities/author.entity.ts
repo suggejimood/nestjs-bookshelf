@@ -14,7 +14,7 @@ export class AuthorEntity {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column({ type: 'varchar', nullable: false })
+  @Column({ type: 'varchar', length: 255, nullable: false })
   name!: string;
 
   @CreateDateColumn({ type: 'timestamp with time zone' })
