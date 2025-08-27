@@ -78,9 +78,11 @@ export class AuthorService {
     };
   }
 
-  public async deleteById(data: { id: string }): Promise<string> {
-    await this.authorRepository.delete({ id: data.id });
+  public async deleteById(data: { id: string }): Promise<void> {
+    const response = await this.authorRepository.delete({ id: data.id });
 
-    return data.id;
+    if (!response.affected) {
+      throw new NotFoundException('Yazar bulunamadı');
+    }
   }
 }
