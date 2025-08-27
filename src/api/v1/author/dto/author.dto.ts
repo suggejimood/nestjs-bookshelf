@@ -156,7 +156,7 @@ export class ListAuthorsQueryDto {
   @Transform(({ value }) => (value !== undefined ? Number(value) : undefined))
   @IsNotEmpty()
   @IsNumberString()
-  page: string;
+  page: number;
 
   @ApiProperty({
     example: '15',
@@ -166,7 +166,7 @@ export class ListAuthorsQueryDto {
   @Transform(({ value }) => (value !== undefined ? Number(value) : undefined))
   @IsNotEmpty()
   @IsNumberString()
-  limit: string;
+  limit: number;
 }
 
 //Response
@@ -191,27 +191,28 @@ class AuthorsItemDto {
     description: 'Authors number of book',
     type: 'string',
   })
-  numberOfBook: string;
+  numberOfBook: number;
 }
 
 export class ListAuthorResponseDto {
   @ApiProperty({
     example: '20',
     description: 'Total number of author',
-    type: 'string',
+    type: 'integer',
   })
-  totalItem: string;
+  totalItem: number;
 
   @ApiProperty({
     example: '20',
     description: 'Total number of page',
-    type: 'string',
+    type: 'integer',
   })
-  totalPage: string;
+  totalPage: number;
 
   @ApiProperty({
     description: `Author's books`,
     type: [AuthorsItemDto],
+    isArray: true,
     example: [
       {
         id: 'b2a0b6c2-9a3e-4d2c-8a7f-0b9c4f3a1e21',
